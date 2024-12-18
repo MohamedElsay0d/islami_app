@@ -17,12 +17,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
-  List<Widget> tabs = const [
+  List<Widget> tabs =  [
     QuranTab(),
     HadethTab(),
     SebhaTab(),
     RadioTab(),
     TimeTab(),
+  ];
+  List<String> backgrounds = const [
+    'assets/images/PNG Images/quran_background.png',
+    'assets/images/PNG Images/hadeth_background.png',
+    'assets/images/PNG Images/sebha_background.png',
+    'assets/images/PNG Images/radio_background.png',
+    'assets/images/PNG Images/time_background.png',
   ];
   @override
   Widget build(BuildContext context) {
@@ -40,62 +47,84 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/images/icons/opened_book.svg',
+              'assets/images/icons/closed_book.svg',
               colorFilter: ColorFilter.mode(unselectedColor!, BlendMode.srcIn),
             ),
             activeIcon: SvgPicture.asset(
-              'assets/images/icons/opened_book.svg',
+              'assets/images/icons/closed_book.svg',
               colorFilter: ColorFilter.mode(selectedColor!, BlendMode.srcIn),
             ),
             label: 'Quran',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/images/icons/radio.svg',
-              colorFilter: ColorFilter.mode(unselectedColor!, BlendMode.srcIn),
+              'assets/images/icons/opened_book.svg',
+              colorFilter: ColorFilter.mode(unselectedColor, BlendMode.srcIn),
             ),
             activeIcon: SvgPicture.asset(
-              'assets/images/icons/radio.svg',
-              colorFilter: ColorFilter.mode(selectedColor!, BlendMode.srcIn),
+              'assets/images/icons/opened_book.svg',
+              colorFilter: ColorFilter.mode(selectedColor, BlendMode.srcIn),
             ),
             label: 'Hadeeth',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/images/icons/sebha.svg',
-              colorFilter: ColorFilter.mode(unselectedColor!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(unselectedColor, BlendMode.srcIn),
             ),
             activeIcon: SvgPicture.asset(
               'assets/images/icons/sebha.svg',
-              colorFilter: ColorFilter.mode(selectedColor!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(selectedColor, BlendMode.srcIn),
             ),
             label: 'Sebha',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/images/icons/radio.svg',
-              colorFilter: ColorFilter.mode(unselectedColor!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(unselectedColor, BlendMode.srcIn),
             ),
             activeIcon: SvgPicture.asset(
               'assets/images/icons/radio.svg',
-              colorFilter: ColorFilter.mode(selectedColor!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(selectedColor, BlendMode.srcIn),
             ),
             label: 'Radio',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/images/icons/wave.svg',
-              colorFilter: ColorFilter.mode(unselectedColor!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(unselectedColor, BlendMode.srcIn),
             ),
             activeIcon: SvgPicture.asset(
               'assets/images/icons/wave.svg',
-              colorFilter: ColorFilter.mode(selectedColor!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(selectedColor, BlendMode.srcIn),
             ),
             label: 'Time',
           ),
         ],
       ),
-      body: tabs[index],
+      body: SafeArea(
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                backgrounds[index],
+              ),
+              fit: BoxFit.fill,
+            ),
+          ),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/PNG Images/header.png',
+                height: MediaQuery.of(context).size.height * 0.18,
+              ),
+              Expanded(child: tabs[index]),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
