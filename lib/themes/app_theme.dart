@@ -12,5 +12,11 @@ class AppTheme {
     unselectedItemColor: black,
     showSelectedLabels: true,
     showUnselectedLabels: false,
+    selectedLabelStyle: TextStyle(
+      fontFamily: 'JannaLT',
+      fontSize: 12,
+      fontWeight: FontWeight.w700,
+      color: white,
+    )
   ));
 }

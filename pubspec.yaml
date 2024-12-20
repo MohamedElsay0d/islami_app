@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.16
 
 dev_dependencies:
@@ -23,3 +24,13 @@ flutter:
     - assets/images/icons/
     - assets/images/PNG Images/
     - assets/images/SVG Images/
+
+  fonts:
+    - family: JannaLT
+      fonts:
+        - asset: assets/Fonts/Janna LT Bold.ttf
+          weight: 700
+    - family: KamaliRegular
+      fonts:
+        - asset: assets/Fonts/KamaliRegular-pg81r.ttf
+        - asset: assets/Fonts/KamaliRegular-xR725.otf
