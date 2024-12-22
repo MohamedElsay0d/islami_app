@@ -4,7 +4,7 @@ import 'package:islami_app/views/home_screen.dart';
 import 'package:islami_app/themes/app_theme.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
 

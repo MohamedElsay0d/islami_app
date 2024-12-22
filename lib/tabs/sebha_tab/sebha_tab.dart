@@ -24,6 +24,7 @@ class _SebhaTabState extends State<SebhaTab> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Text(
           'سَبِّحِ اسْمَ رَبِّكَ الأعلى ',
@@ -32,12 +33,6 @@ class _SebhaTabState extends State<SebhaTab> {
             fontSize: 36.sp,
             fontWeight: FontWeight.w700,
             color: Colors.white,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 50.w),
-          child: Image.asset(
-            'assets/images/PNG Images/Mask group.png',
           ),
         ),
         GestureDetector(
@@ -51,14 +46,24 @@ class _SebhaTabState extends State<SebhaTab> {
           },
           child: Stack(
             alignment: Alignment.center,
+            clipBehavior: Clip.none,
             children: [
+              Positioned(
+                top: -65.h,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 58.w),
+                  child: Image.asset(
+                    'assets/images/PNG Images/Mask group.png',
+                  ),
+                ),
+              ),
               AnimatedRotation(
                 turns: rotationAngle / (2 * pi),
                 duration: const Duration(milliseconds: 300),
                 child: Image.asset(
                   'assets/images/PNG Images/SebhaBody 1.png',
-                  width: 379.w, // استخدم w
-                  height: 381.h, // استخدم h
+                  width: 379.w, 
+                  height: 381.h, 
                 ),
               ),
               Column(
@@ -67,12 +72,12 @@ class _SebhaTabState extends State<SebhaTab> {
                   Text(
                     azkar[zekrindex],
                     style: TextStyle(
-                      fontSize: 24.sp, // النصوص باستخدام sp
+                      fontSize: 24.sp, 
                       fontFamily: 'JannaLT',
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 8.h), // المسافات الرأسية باستخدام h
+                  SizedBox(height: 8.h), 
                   Text(
                     '$counter',
                     style: TextStyle(
