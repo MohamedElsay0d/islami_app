@@ -18,5 +18,6 @@ class AppTheme {
       fontWeight: FontWeight.w700,
       color: white,
     )
-  ));
+  ),
+  );
 }
