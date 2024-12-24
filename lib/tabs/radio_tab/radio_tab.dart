@@ -48,21 +48,81 @@ class RadioTab extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
                       child: RadioCard(
-                          stationName: "MohamedELSayed", isPlaying: false),
+                          stationName: "Radio Ibrahim Al-Akdar",
+                          isPlaying: false),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
                       child: RadioCard(
-                          stationName: "MohamedELSayed", isPlaying: true),
+                          stationName: "Radio Al-Qaria Yassen",
+                          isPlaying: true),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
                       child: RadioCard(
-                          stationName: "MohamedELSayed", isPlaying: false),
+                          stationName: "Radio Addokali Mohammad Alalim",
+                          isPlaying: false),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Ibrahim Al-Akdar",
+                          isPlaying: false),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Al-Qaria Yassen",
+                          isPlaying: true),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Addokali Mohammad Alalim",
+                          isPlaying: false),
                     ),
                   ],
                 ),
-                Center(child: Text('Programs')),
+                ListView(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Ibrahim Al-Akdar",
+                          isPlaying: false),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Al-Qaria Yassen",
+                          isPlaying: true),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Addokali Mohammad Alalim",
+                          isPlaying: false),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Ibrahim Al-Akdar",
+                          isPlaying: false),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Al-Qaria Yassen",
+                          isPlaying: true),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RadioCard(
+                          stationName: "Radio Addokali Mohammad Alalim",
+                          isPlaying: false),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
