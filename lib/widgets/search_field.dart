@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({super.key});
-
+  const SearchField({super.key , required this.onSearch});
+   final void Function(String) onSearch;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,18 +21,19 @@ class SearchField extends StatelessWidget {
                   color: const Color(0xffE2BE7F),
                 ),
                 const SizedBox(width: 8),  
-                const Expanded(
+                Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Sura Name',
                       hintStyle: TextStyle(
                         color: Colors.white70, 
                       ),
                       border: InputBorder.none, 
                     ),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white, 
                     ),
+                    onChanged: onSearch,
                   ),
                 ),
               ],
