@@ -4,7 +4,7 @@ class SureModel {
   String ayasNumber;
   int sureNumber ; 
   
-  SureModel(this.sureNumber,this.sureNameEnglish, this.sureNameArabic, this.ayasNumber);
+  SureModel({required this.sureNumber,required this.sureNameEnglish,required this.sureNameArabic, required this.ayasNumber});
 
   
 

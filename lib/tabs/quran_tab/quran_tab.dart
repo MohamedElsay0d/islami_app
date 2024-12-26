@@ -1,11 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:islami_app/tabs/quran_tab/sura_item.dart';
 import 'package:islami_app/widgets/search_field.dart';
 
 import '../../themes/app_theme.dart';
 import 'constants.dart';
+import 'most_view.dart';
+import 'sura_details_screen.dart';
 import 'sure_model.dart';
 
 class QuranTab extends StatefulWidget {
@@ -16,18 +16,16 @@ class QuranTab extends StatefulWidget {
 }
 
 class _QuranTabState extends State<QuranTab> {
-  final List<String> arabic_surahs = arabicAuranSuras;
+  final List<String> arabic_surahs = Constants.arabicAuranSuras;
 
-  final List<String> english_surahs = englishQuranSurahs;
+  final List<String> english_surahs = Constants.englishQuranSurahs;
 
-  final List<String> ayasNumber = AyaNumber;
-
+  final List<String> ayasNumber = Constants.AyaNumber;
   List<int> searchList = List.generate(114, (index) => index);
 
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
     final textTheme = Theme.of(context).textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,10 +45,9 @@ class _QuranTabState extends State<QuranTab> {
             },
           ),
         ),
-        Text(
-          'Most Recently',
-          style: textTheme.titleMedium,
-        ),
+        Visibility(
+            visible: Constants.MostRecentSuraIndex.isNotEmpty,
+            child: MostView()),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
@@ -59,25 +56,52 @@ class _QuranTabState extends State<QuranTab> {
           ),
         ),
         Expanded(
-          child: searchList.isEmpty ? Center(child: Text('No Sura found' , style: textTheme.headlineSmall!.copyWith(color: AppTheme.primaryColor),),)
-          : ListView.separated(
-            itemCount: arabic_surahs.length,
-            separatorBuilder: (context, index) => searchList.contains(index)
-                ? Divider(
-                    color: AppTheme.white,
-                    indent: width * .15,
-                    endIndent: width * .15,
-                  )
-                : SizedBox(),
-            itemBuilder: (context, index) {
-              return searchList.contains(index)
-                  ? SuraItem(
-                      sureModel: SureModel(index + 1, english_surahs[index],
-                          arabic_surahs[index], ayasNumber[index]),
-                    )
-                  : SizedBox();
-            },
-          ),
+          child: searchList.isEmpty
+              ? Center(
+                  child: Text(
+                    'No Sura found',
+                    style: textTheme.headlineSmall!
+                        .copyWith(color: AppTheme.primaryColor),
+                  ),
+                )
+              : ListView.separated(
+                  itemCount: arabic_surahs.length,
+                  separatorBuilder: (context, index) =>
+                      searchList.contains(index)
+                          ? Divider(
+                              color: AppTheme.white,
+                              indent: width * .15,
+                              endIndent: width * .15,
+                            )
+                          : SizedBox(),
+                  itemBuilder: (context, index) {
+                    final SureModel sura = SureModel(
+                        sureNumber: index + 1,
+                        sureNameEnglish: english_surahs[index],
+                        sureNameArabic: arabic_surahs[index],
+                        ayasNumber: ayasNumber[index]);
+                    return searchList.contains(index)
+                        ? InkWell(
+                            onTap: () async {
+                              if (!Constants.MostRecentSuraIndex.contains(
+                                  sura)) {
+                                Constants.addSuraToMostRecent(
+                                    sura.sureNumber - 1);
+                              }
+                              await Navigator.pushNamed(
+                                context,
+                                SuraDetailsScreen.routeName,
+                                arguments: sura,
+                              );
+                              setState(() {});
+                            },
+                            child: SuraItem(
+                              sureModel: sura,
+                            ),
+                          )
+                        : SizedBox();
+                  },
+                ),
         )
       ],
     );

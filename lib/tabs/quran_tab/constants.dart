@@ -1,4 +1,7 @@
- List<String> arabicAuranSuras = [
+import 'package:islami_app/tabs/quran_tab/sure_model.dart';
+
+class Constants {
+  static List<String> arabicAuranSuras = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
@@ -114,7 +117,7 @@
     "الفلق",
     "الناس"
   ];
-  List<String> englishQuranSurahs = [
+  static List<String> englishQuranSurahs = [
     "Al-Fatiha",
     "Al-Baqarah",
     "Aal-E-Imran",
@@ -230,7 +233,7 @@
     "Al-Falaq",
     "An-Nas"
   ];
-  List<String> AyaNumber = [
+  static List<String> AyaNumber = [
     '7',
     '286',
     '200',
@@ -346,3 +349,20 @@
     '5',
     '6'
   ];
+  static List<SureModel> MostRecentSuraIndex = [];
+
+  static void addSuraToMostRecent(int index) {
+    SureModel sura = SureModel(
+      sureNumber: index + 1,
+      sureNameEnglish: Constants.englishQuranSurahs[index],
+      sureNameArabic: Constants.arabicAuranSuras[index],
+      ayasNumber: Constants.AyaNumber[index],
+    );
+    MostRecentSuraIndex.removeWhere(
+        (existingSura) => existingSura.sureNumber == sura.sureNumber);
+    MostRecentSuraIndex.insert(0, sura);
+    if (MostRecentSuraIndex.length > 5) {
+      MostRecentSuraIndex.removeLast();
+    }
+  }
+}
