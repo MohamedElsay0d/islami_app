@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/themes/app_theme.dart';
 
+import 'sure_model.dart';
+
 class SuraDetailsScreen extends StatelessWidget {
   static const String routeName = 'sura_details';
   const SuraDetailsScreen({super.key});
@@ -8,9 +10,10 @@ class SuraDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final SureModel sureModel = ModalRoute.of(context)!.settings.arguments as SureModel;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sura Details'),
+        title: Text(sureModel.sureNameEnglish),
       ),
       body: Column(children: [
         Padding(
@@ -20,7 +23,7 @@ class SuraDetailsScreen extends StatelessWidget {
             children: [
               Image.asset('assets/images/PNG Images/details_header_left.png'),
               Text(
-                'Sura',
+                sureModel.sureNameArabic,
                 style: textTheme.headlineSmall!
                     .copyWith(color: AppTheme.primaryColor),
               ),
@@ -30,7 +33,9 @@ class SuraDetailsScreen extends StatelessWidget {
         ),
         Expanded(
             child: ListView.builder(
-          itemBuilder: (context, index) => Text(''),
+          itemBuilder: (context, index) => Text(
+            sureModel.sureNameArabic,
+          ),
         )),
         Image.asset(
           'assets/images/PNG Images/Mosque-02.png',

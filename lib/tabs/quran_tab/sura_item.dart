@@ -2,25 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../../themes/app_theme.dart';
 import 'sura_details_screen.dart';
+import 'sure_model.dart';
 
 class SuraItem extends StatelessWidget {
-  String english_surah;
-  String arabic_surah;
-  int index;
-  String ayasNumber;
+  final SureModel sureModel ;
   SuraItem(
-      {super.key,
-      required this.english_surah,
-      required this.arabic_surah,
-      required this.index,
-      required this.ayasNumber});
+      {super.key, required this.sureModel,
+});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, SuraDetailsScreen.routeName);
+        Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+            arguments:
+                sureModel);
       },
       child: ListTile(
         leading: Container(
@@ -32,21 +29,21 @@ class SuraItem extends StatelessWidget {
           )),
           child: Center(
             child: Text(
-              '${index + 1}',
+              '${sureModel.index + 1}',
               style: textTheme.titleLarge,
             ),
           ),
         ),
         title: Text(
-          english_surah,
+          sureModel.sureNameEnglish,
           style: textTheme.titleLarge,
         ),
         subtitle: Text(
-          '$ayasNumber Verses',
+          '${sureModel.sureNumber} Verses',
           style: textTheme.titleSmall,
         ),
         trailing: Text(
-          arabic_surah,
+          sureModel.sureNameArabic,
           style: textTheme.titleLarge,
         ),
       ),

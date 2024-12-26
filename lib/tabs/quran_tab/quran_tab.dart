@@ -4,6 +4,7 @@ import 'package:islami_app/widgets/search_field.dart';
 
 import '../../themes/app_theme.dart';
 import 'constants.dart';
+import 'sure_model.dart';
 
 class QuranTab extends StatelessWidget {
   QuranTab({super.key});
@@ -38,10 +39,8 @@ class QuranTab extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               return SuraItem(
-                index: index,
-                arabic_surah: arabic_surahs[index],
-                english_surah: english_surahs[index],
-                ayasNumber: ayasNumber[index],
+                sureModel: SureModel(index, english_surahs[index],
+                    arabic_surahs[index], ayasNumber[index]),
               );
             },
           ),

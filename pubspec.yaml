@@ -24,6 +24,8 @@ flutter:
     - assets/images/icons/
     - assets/images/PNG Images/
     - assets/images/SVG Images/
+    - assets/text/Hadeeth/
+    - assets/text/Suras/
 
   fonts:
     - family: JannaLT
