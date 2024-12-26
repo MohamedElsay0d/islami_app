@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 34,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(125, 32, 32, 32), // الخلفية المحددة
-                borderRadius: BorderRadius.circular(66), 
+                borderRadius: BorderRadius.circular(66),
               ),
               child: SvgPicture.asset(
                 'assets/images/icons/closed_book.svg',
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 34,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(125, 32, 32, 32), // الخلفية المحددة
-                borderRadius: BorderRadius.circular(66), 
+                borderRadius: BorderRadius.circular(66),
               ),
               child: SvgPicture.asset(
                 'assets/images/icons/opened_book.svg',
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 34,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(125, 32, 32, 32), // الخلفية المحددة
-                borderRadius: BorderRadius.circular(66), 
+                borderRadius: BorderRadius.circular(66),
               ),
               child: SvgPicture.asset(
                 'assets/images/icons/sebha.svg',
@@ -111,8 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 59,
               height: 34,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(125, 32, 32, 32), 
-                borderRadius: BorderRadius.circular(66), 
+                color: const Color.fromARGB(125, 32, 32, 32),
+                borderRadius: BorderRadius.circular(66),
               ),
               child: SvgPicture.asset(
                 'assets/images/icons/radio.svg',
@@ -130,8 +130,8 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 59,
               height: 34,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(125, 32, 32, 32), 
-                borderRadius: BorderRadius.circular(66), 
+                color: const Color.fromARGB(125, 32, 32, 32),
+                borderRadius: BorderRadius.circular(66),
               ),
               child: SvgPicture.asset(
                 'assets/images/icons/wave.svg',
@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 19.0),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Column(
               children: [
                 Image.asset(
