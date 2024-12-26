@@ -1,10 +1,10 @@
 class SureModel {
   String sureNameArabic;
   String sureNameEnglish;
-  String sureNumber;
-  int index ; 
+  String ayasNumber;
+  int sureNumber ; 
   
-  SureModel(this.index,this.sureNameEnglish, this.sureNameArabic, this.sureNumber);
+  SureModel(this.sureNumber,this.sureNameEnglish, this.sureNameArabic, this.ayasNumber);
 
   
 

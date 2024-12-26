@@ -39,7 +39,7 @@ class QuranTab extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               return SuraItem(
-                sureModel: SureModel(index, english_surahs[index],
+                sureModel: SureModel(index+1, english_surahs[index],
                     arabic_surahs[index], ayasNumber[index]),
               );
             },

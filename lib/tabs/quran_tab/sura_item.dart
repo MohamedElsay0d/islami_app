@@ -5,10 +5,11 @@ import 'sura_details_screen.dart';
 import 'sure_model.dart';
 
 class SuraItem extends StatelessWidget {
-  final SureModel sureModel ;
-  SuraItem(
-      {super.key, required this.sureModel,
-});
+  final SureModel sureModel;
+  SuraItem({
+    super.key,
+    required this.sureModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,7 @@ class SuraItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, SuraDetailsScreen.routeName,
-            arguments:
-                sureModel);
+            arguments: sureModel);
       },
       child: ListTile(
         leading: Container(
@@ -29,7 +29,7 @@ class SuraItem extends StatelessWidget {
           )),
           child: Center(
             child: Text(
-              '${sureModel.index + 1}',
+              '${sureModel.sureNumber}',
               style: textTheme.titleLarge,
             ),
           ),
@@ -39,7 +39,7 @@ class SuraItem extends StatelessWidget {
           style: textTheme.titleLarge,
         ),
         subtitle: Text(
-          '${sureModel.sureNumber} Verses',
+          '${sureModel.ayasNumber} Verses',
           style: textTheme.titleSmall,
         ),
         trailing: Text(
