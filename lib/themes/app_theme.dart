@@ -6,6 +6,18 @@ class AppTheme {
   static const Color white = Color(0xFFFFFFFF);
   static ThemeData lightTheme = ThemeData();
   static ThemeData darkTheme = ThemeData(
+      appBarTheme: const AppBarTheme(
+        backgroundColor: black,
+        foregroundColor: primaryColor,
+        titleTextStyle: TextStyle(
+          fontFamily: 'JannaLT',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: primaryColor,
+        ),
+        centerTitle: true,
+      ),
+      scaffoldBackgroundColor: black,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: primaryColor,
           selectedItemColor: white,
@@ -20,10 +32,10 @@ class AppTheme {
           )),
       textTheme: const TextTheme(
           headlineSmall: TextStyle(
-            fontFamily: 'JannaLT',
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-          ),
+              fontFamily: 'JannaLT',
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              color: white),
           titleLarge: TextStyle(
               fontFamily: 'JannaLT',
               fontSize: 20,
@@ -32,11 +44,13 @@ class AppTheme {
           titleMedium: TextStyle(
             fontFamily: 'JannaLT',
             fontSize: 16,
-            fontWeight: FontWeight.w700,color: white,
+            fontWeight: FontWeight.w700,
+            color: white,
           ),
           titleSmall: TextStyle(
             fontFamily: 'JannaLT',
             fontSize: 14,
-            fontWeight: FontWeight.w700,color: white,
+            fontWeight: FontWeight.w700,
+            color: white,
           )));
 }

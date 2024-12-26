@@ -33,8 +33,8 @@ class QuranTab extends StatelessWidget {
             itemCount: arabic_surahs.length,
             separatorBuilder: (context, index) => Divider(
               color: AppTheme.white,
-              indent: width * .1,
-              endIndent: width * .1,
+              indent: width * .15,
+              endIndent: width * .15,
             ),
             itemBuilder: (context, index) {
               return SuraItem(

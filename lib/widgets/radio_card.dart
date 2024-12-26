@@ -39,7 +39,7 @@ class RadioCard extends StatelessWidget {
             children: [
               isPlaying
                   ? Image.asset('assets/images/PNG Images/Group 38.png')
-                  : Image.asset('assets/images/PNG Images/Mosque-02.png'),
+                  : Image.asset('assets/images/PNG Images/MosqueCard.png'),
               Center(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
