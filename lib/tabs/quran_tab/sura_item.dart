@@ -3,7 +3,7 @@ import 'sure_model.dart';
 
 class SuraItem extends StatelessWidget {
   final SureModel sureModel;
-  SuraItem({
+  const SuraItem({
     super.key,
     required this.sureModel,
   });

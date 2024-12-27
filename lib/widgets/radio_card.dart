@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../themes/app_theme.dart';
 
 class RadioCard extends StatelessWidget {
@@ -34,7 +32,7 @@ class RadioCard extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Stack(
             children: [
               isPlaying

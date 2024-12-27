@@ -350,6 +350,7 @@ class Constants {
     '6'
   ];
   static List<SureModel> MostRecentSuraIndex = [];
+  static List<int> searchList = List.generate(114, (index) => index);
 
   static void addSuraToMostRecent(int index) {
     SureModel sura = SureModel(
@@ -363,6 +364,16 @@ class Constants {
     MostRecentSuraIndex.insert(0, sura);
     if (MostRecentSuraIndex.length > 5) {
       MostRecentSuraIndex.removeLast();
+    }
+  }
+
+  static void searchSuraName(String query){
+    searchList.clear();
+    for (int i = 0; i < arabicAuranSuras.length; i++) {
+      if (arabicAuranSuras[i].contains(query) ||
+          englishQuranSurahs[i].contains(query)) {
+        searchList.add(i);
+      }
     }
   }
 }

@@ -13,11 +13,10 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
-    return  ScreenUtilInit(
+    return ScreenUtilInit(
       designSize: const Size(390, 844),
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -26,7 +25,7 @@ class MainApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         initialRoute: OnboardingScreen.routeName,
         routes: {
-          HomeScreen.routeName: (context) =>const HomeScreen(),
+          HomeScreen.routeName: (context) => const HomeScreen(),
           SuraDetailsScreen.routeName: (context) => SuraDetailsScreen(),
           OnboardingScreen.routeName: (context) => const OnboardingScreen(),
         },

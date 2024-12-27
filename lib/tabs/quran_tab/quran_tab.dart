@@ -9,19 +9,19 @@ import 'sura_details_screen.dart';
 import 'sure_model.dart';
 
 class QuranTab extends StatefulWidget {
-  QuranTab({super.key});
+  const QuranTab({super.key});
 
   @override
   State<QuranTab> createState() => _QuranTabState();
 }
 
 class _QuranTabState extends State<QuranTab> {
-  final List<String> arabic_surahs = Constants.arabicAuranSuras;
-
-  final List<String> english_surahs = Constants.englishQuranSurahs;
-
-  final List<String> ayasNumber = Constants.AyaNumber;
-  List<int> searchList = List.generate(114, (index) => index);
+  // final List<String> arabic_surahs = Constants.arabicAuranSuras;
+  //
+  // final List<String> english_surahs = Constants.englishQuranSurahs;
+  //
+  // final List<String> ayasNumber = Constants.AyaNumber;
+  // List<int> searchList = List.generate(114, (index) => index);
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +34,14 @@ class _QuranTabState extends State<QuranTab> {
           padding: const EdgeInsets.all(8.0),
           child: SearchField(
             onSearch: (String query) {
-              searchList.clear();
-              for (int i = 0; i < arabic_surahs.length; i++) {
-                if (arabic_surahs[i].contains(query) ||
-                    english_surahs[i].contains(query)) {
-                  searchList.add(i);
-                }
-              }
+              Constants.searchSuraName(query);
               setState(() {});
             },
           ),
         ),
         Visibility(
             visible: Constants.MostRecentSuraIndex.isNotEmpty,
-            child: MostView()),
+            child: const MostView()),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
@@ -56,7 +50,7 @@ class _QuranTabState extends State<QuranTab> {
           ),
         ),
         Expanded(
-          child: searchList.isEmpty
+          child: Constants.searchList.isEmpty
               ? Center(
                   child: Text(
                     'No Sura found',
@@ -65,22 +59,22 @@ class _QuranTabState extends State<QuranTab> {
                   ),
                 )
               : ListView.separated(
-                  itemCount: arabic_surahs.length,
+                  itemCount: Constants.arabicAuranSuras.length,
                   separatorBuilder: (context, index) =>
-                      searchList.contains(index)
+                  Constants.searchList.contains(index)
                           ? Divider(
                               color: AppTheme.white,
                               indent: width * .15,
                               endIndent: width * .15,
                             )
-                          : SizedBox(),
+                          : const SizedBox(),
                   itemBuilder: (context, index) {
                     final SureModel sura = SureModel(
                         sureNumber: index + 1,
-                        sureNameEnglish: english_surahs[index],
-                        sureNameArabic: arabic_surahs[index],
-                        ayasNumber: ayasNumber[index]);
-                    return searchList.contains(index)
+                        sureNameEnglish:  Constants.englishQuranSurahs[index],
+                        sureNameArabic:  Constants.arabicAuranSuras[index],
+                        ayasNumber:  Constants.AyaNumber[index]);
+                    return Constants.searchList.contains(index)
                         ? InkWell(
                             onTap: () async {
                               if (!Constants.MostRecentSuraIndex.contains(
@@ -99,7 +93,7 @@ class _QuranTabState extends State<QuranTab> {
                               sureModel: sura,
                             ),
                           )
-                        : SizedBox();
+                        : const SizedBox();
                   },
                 ),
         )

@@ -6,7 +6,7 @@ import 'sure_model.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'sura_details';
-  SuraDetailsScreen({super.key});
+  const SuraDetailsScreen({super.key});
 
   @override
   State<SuraDetailsScreen> createState() => _SuraDetailsScreenState();
