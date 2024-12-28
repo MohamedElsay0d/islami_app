@@ -61,7 +61,7 @@ class _QuranTabState extends State<QuranTab> {
               : ListView.separated(
                   itemCount: Constants.arabicAuranSuras.length,
                   separatorBuilder: (context, index) =>
-                  Constants.searchList.contains(index)
+                      Constants.searchList.contains(index)
                           ? Divider(
                               color: AppTheme.white,
                               indent: width * .15,
@@ -71,9 +71,9 @@ class _QuranTabState extends State<QuranTab> {
                   itemBuilder: (context, index) {
                     final SureModel sura = SureModel(
                         sureNumber: index + 1,
-                        sureNameEnglish:  Constants.englishQuranSurahs[index],
-                        sureNameArabic:  Constants.arabicAuranSuras[index],
-                        ayasNumber:  Constants.AyaNumber[index]);
+                        sureNameEnglish: Constants.englishQuranSurahs[index],
+                        sureNameArabic: Constants.arabicAuranSuras[index],
+                        ayasNumber: Constants.AyaNumber[index]);
                     return Constants.searchList.contains(index)
                         ? InkWell(
                             onTap: () async {
