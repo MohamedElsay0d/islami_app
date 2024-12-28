@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/tabs/quran_tab/sure_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Constants {
   static List<String> arabicAuranSuras = [
@@ -350,35 +351,64 @@ class Constants {
     '5',
     '6'
   ];
-  static final ValueNotifier<List<SureModel>> mostRecentSuraIndex = ValueNotifier([]);
-
+  static final ValueNotifier<List<SureModel>> mostRecentSuraIndex =
+      ValueNotifier([]);
   static final List<int> searchList = List.generate(114, (index) => index);
 
+  static Future<void> saveMostRecentSuras() async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String> recentSuras = mostRecentSuraIndex.value
+        .map((sura) => sura.sureNumber.toString())
+        .toList();
+    await prefs.setStringList('mostRecentSuras', recentSuras);
+  }
+
+  static Future<void> loadMostRecentSuras() async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String>? recentSuras = prefs.getStringList('mostRecentSuras');
+    if (recentSuras != null) {
+      mostRecentSuraIndex.value = recentSuras.map((suraNumber) {
+        int index = int.parse(suraNumber) - 1;
+        return SureModel(
+          sureNumber: index + 1,
+          sureNameEnglish: englishQuranSurahs[index],
+          sureNameArabic: arabicAuranSuras[index],
+          ayasNumber: AyaNumber[index],
+        );
+      }).toList();
+    }
+  }
+
   static void addSuraToMostRecent(int index) {
-  final sura = SureModel(
-    sureNumber: index + 1,
-    sureNameEnglish: englishQuranSurahs[index],
-    sureNameArabic: arabicAuranSuras[index],
-    ayasNumber: AyaNumber[index],
-  );
+    final sura = SureModel(
+      sureNumber: index + 1,
+      sureNameEnglish: englishQuranSurahs[index],
+      sureNameArabic: arabicAuranSuras[index],
+      ayasNumber: AyaNumber[index],
+    );
 
-  if (mostRecentSuraIndex.value.any((existingSura) => existingSura.sureNumber == sura.sureNumber)) {
-    return; 
-  }
+    if (mostRecentSuraIndex.value
+        .any((existingSura) => existingSura.sureNumber == sura.sureNumber)) {
+      return;
+    }
 
-  mostRecentSuraIndex.value = [
-    sura,
-    ...mostRecentSuraIndex.value,
-  ];
-  if (mostRecentSuraIndex.value.length > 5) {
-    mostRecentSuraIndex.value = mostRecentSuraIndex.value.sublist(0, 5);
+    mostRecentSuraIndex.value = [
+      sura,
+      ...mostRecentSuraIndex.value,
+    ];
+
+    if (mostRecentSuraIndex.value.length > 5) {
+      mostRecentSuraIndex.value = mostRecentSuraIndex.value.sublist(0, 5);
+    }
+
+    saveMostRecentSuras();
   }
-}
 
   static void searchSuraName(String query) {
     searchList.clear();
     for (int i = 0; i < arabicAuranSuras.length; i++) {
-      if (arabicAuranSuras[i].contains(query) || englishQuranSurahs[i].contains(query)) {
+      if (arabicAuranSuras[i].contains(query) ||
+          englishQuranSurahs[i].contains(query)) {
         searchList.add(i);
       }
     }

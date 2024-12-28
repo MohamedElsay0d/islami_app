@@ -10,12 +10,17 @@ import 'sure_model.dart';
 
 class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
-
   @override
   State<QuranTab> createState() => _QuranTabState();
 }
 
 class _QuranTabState extends State<QuranTab> {
+  @override
+  void initState() {
+    super.initState();
+    Constants.loadMostRecentSuras().then((_) => setState(() {}));
+  }
+
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -33,7 +38,8 @@ class _QuranTabState extends State<QuranTab> {
           ),
         ),
         Visibility(
-            visible: Constants.mostRecentSuraIndex.value.isNotEmpty,
+            visible: Constants.mostRecentSuraIndex.value.isNotEmpty &&
+                Constants.mostRecentSuraIndex.value.any((sura) => true),
             child: const MostView()),
         Padding(
           padding: const EdgeInsets.all(8.0),
