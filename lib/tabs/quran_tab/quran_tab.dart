@@ -16,7 +16,6 @@ class QuranTab extends StatefulWidget {
 }
 
 class _QuranTabState extends State<QuranTab> {
-
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -34,7 +33,7 @@ class _QuranTabState extends State<QuranTab> {
           ),
         ),
         Visibility(
-            visible: Constants.MostRecentSuraIndex.isNotEmpty,
+            visible: Constants.mostRecentSuraIndex.value.isNotEmpty,
             child: const MostView()),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -71,16 +70,16 @@ class _QuranTabState extends State<QuranTab> {
                     return Constants.searchList.contains(index)
                         ? InkWell(
                             onTap: () async {
-                              if (!Constants.MostRecentSuraIndex.contains(
-                                  sura)) {
-                                Constants.addSuraToMostRecent(
-                                    sura.sureNumber - 1);
-                              }
                               await Navigator.pushNamed(
                                 context,
                                 SuraDetailsScreen.routeName,
                                 arguments: sura,
                               );
+                              if (!Constants.mostRecentSuraIndex.value
+                                  .contains(sura)) {
+                                Constants.addSuraToMostRecent(
+                                    sura.sureNumber - 1);
+                              }
                               setState(() {});
                             },
                             child: SuraItem(

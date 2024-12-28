@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:islami_app/tabs/quran_tab/sure_model.dart';
 
 class Constants {
@@ -349,30 +350,35 @@ class Constants {
     '5',
     '6'
   ];
-  static List<SureModel> MostRecentSuraIndex = [];
-  static List<int> searchList = List.generate(114, (index) => index);
+  static final ValueNotifier<List<SureModel>> mostRecentSuraIndex = ValueNotifier([]);
+
+  static final List<int> searchList = List.generate(114, (index) => index);
 
   static void addSuraToMostRecent(int index) {
-    SureModel sura = SureModel(
-      sureNumber: index + 1,
-      sureNameEnglish: Constants.englishQuranSurahs[index],
-      sureNameArabic: Constants.arabicAuranSuras[index],
-      ayasNumber: Constants.AyaNumber[index],
-    );
-    MostRecentSuraIndex.removeWhere(
-        (existingSura) => existingSura.sureNumber == sura.sureNumber);
-    MostRecentSuraIndex.insert(0, sura);
-    if (MostRecentSuraIndex.length > 5) {
-      MostRecentSuraIndex.removeLast();
-    }
-    
+  final sura = SureModel(
+    sureNumber: index + 1,
+    sureNameEnglish: englishQuranSurahs[index],
+    sureNameArabic: arabicAuranSuras[index],
+    ayasNumber: AyaNumber[index],
+  );
+
+  if (mostRecentSuraIndex.value.any((existingSura) => existingSura.sureNumber == sura.sureNumber)) {
+    return; 
   }
 
-  static void searchSuraName(String query){
+  mostRecentSuraIndex.value = [
+    sura,
+    ...mostRecentSuraIndex.value,
+  ];
+  if (mostRecentSuraIndex.value.length > 5) {
+    mostRecentSuraIndex.value = mostRecentSuraIndex.value.sublist(0, 5);
+  }
+}
+
+  static void searchSuraName(String query) {
     searchList.clear();
     for (int i = 0; i < arabicAuranSuras.length; i++) {
-      if (arabicAuranSuras[i].contains(query) ||
-          englishQuranSurahs[i].contains(query)) {
+      if (arabicAuranSuras[i].contains(query) || englishQuranSurahs[i].contains(query)) {
         searchList.add(i);
       }
     }
