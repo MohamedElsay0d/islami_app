@@ -16,12 +16,6 @@ class QuranTab extends StatefulWidget {
 }
 
 class _QuranTabState extends State<QuranTab> {
-  // final List<String> arabic_surahs = Constants.arabicAuranSuras;
-  //
-  // final List<String> english_surahs = Constants.englishQuranSurahs;
-  //
-  // final List<String> ayasNumber = Constants.AyaNumber;
-  // List<int> searchList = List.generate(114, (index) => index);
 
   @override
   Widget build(BuildContext context) {

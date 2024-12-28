@@ -365,6 +365,7 @@ class Constants {
     if (MostRecentSuraIndex.length > 5) {
       MostRecentSuraIndex.removeLast();
     }
+    
   }
 
   static void searchSuraName(String query){
