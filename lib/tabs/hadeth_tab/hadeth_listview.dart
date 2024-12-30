@@ -1,9 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:islami_app/tabs/hadeth_tab/hadeth_item.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-class TimeTab extends StatelessWidget {
-  const TimeTab({super.key});
+import 'hadeth_item.dart';
+
+class HadethListview extends StatelessWidget {
+  const HadethListview({super.key});
 
   @override
   Widget build(BuildContext context) {
