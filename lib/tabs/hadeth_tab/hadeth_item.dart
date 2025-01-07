@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_app/tabs/hadeth_tab/hadeth_model.dart';
 import 'package:islami_app/themes/app_theme.dart';
 
 class HadethItem extends StatelessWidget {
-  const HadethItem({super.key});
+  int index ;
+   HadethItem({super.key , required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -69,5 +72,15 @@ class HadethItem extends StatelessWidget {
         ),
       ]),
     );
+  }
+  loadHadeth() async {
+    String hadethContent =
+        await rootBundle.loadString('assets/text/Hadeeth/h${index +1}.txt');
+    List<String> hadethList = hadethContent.split('\n');
+    String title = hadethList[0];
+    hadethList.removeAt(0);
+    List<String> content = hadethList;
+    HadethModel(title: title, content: content, number: index + 1);
+
   }
 }

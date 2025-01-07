@@ -12,7 +12,7 @@ class TimeTab extends StatelessWidget {
       child: CarouselSlider.builder(
         itemCount: 10,
         itemBuilder: (BuildContext context, int index, int realIndex) {
-          return HadethItem();
+          return HadethItem(index: 1,);
         },
         options: CarouselOptions(
           height: double.infinity,

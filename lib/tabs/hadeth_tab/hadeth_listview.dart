@@ -13,7 +13,7 @@ class HadethListview extends StatelessWidget {
       child: CarouselSlider.builder(
         itemCount: 10,
         itemBuilder: (BuildContext context, int index, int realIndex) {
-          return HadethItem();
+          return HadethItem(index: index,);
         },
         options: CarouselOptions(
           height: double.infinity,
